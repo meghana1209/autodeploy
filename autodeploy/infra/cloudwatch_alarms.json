@@ -1,0 +1,28 @@
+{
+  "alarms": [
+    {
+      "AlarmName": "AutoDeploy-HighErrorRate",
+      "MetricName": "Errors",
+      "Namespace": "AWS/Lambda",
+      "Statistic": "Sum",
+      "Period": 60,
+      "EvaluationPeriods": 1,
+      "Threshold": 1,
+      "ComparisonOperator": "GreaterThanOrEqualToThreshold",
+      "Dimensions": [{ "Name": "FunctionName", "Value": "autodeploy-handler" }],
+      "AlarmDescription": "Alert when Lambda errors >= 1 in 60 seconds"
+    },
+    {
+      "AlarmName": "AutoDeploy-HighDuration",
+      "MetricName": "Duration",
+      "Namespace": "AWS/Lambda",
+      "Statistic": "p99",
+      "Period": 300,
+      "EvaluationPeriods": 1,
+      "Threshold": 3000,
+      "ComparisonOperator": "GreaterThanThreshold",
+      "Dimensions": [{ "Name": "FunctionName", "Value": "autodeploy-handler" }],
+      "AlarmDescription": "Alert when p99 duration exceeds 3 seconds"
+    }
+  ]
+}
